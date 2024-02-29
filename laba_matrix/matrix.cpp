@@ -4,26 +4,26 @@
 
 int main()
 {
-	Matrix matrix1(3, 3); // Создаем матрицы 3х3
+	Matrix matrix1(3, 3); // РЎРѕР·РґР°РµРј РјР°С‚СЂРёС†С‹ 3С…3
 	Matrix matrix2(3, 3);
 
-	matrix1.fillRandom(); // Заполняем случайными числами
+	matrix1.fillRandom(); // Р—Р°РїРѕР»РЅСЏРµРј СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
 	matrix2.fillRandom();
 
 	std::cout << " ---- Showcases ----" << std::endl;
-	std::cout << "1) First random matrix: " << "\n" << matrix1 << std::endl; // Тест вывода в виде таблицы
+	std::cout << "1) First random matrix: " << "\n" << matrix1 << std::endl; // РўРµСЃС‚ РІС‹РІРѕРґР° РІ РІРёРґРµ С‚Р°Р±Р»РёС†С‹
 	std::cout << "2) Second random matrix: " << "\n" << matrix2 << std::endl;
 
-	std::cout << "3) Addition: " << "\n" << matrix1 + matrix2 << std::endl; // Тест сложения
+	std::cout << "3) Addition: " << "\n" << matrix1 + matrix2 << std::endl; // РўРµСЃС‚ СЃР»РѕР¶РµРЅРёСЏ
 
-	Matrix matrix3(3, 3); // Создаем третью нулевую матрицу
+	Matrix matrix3(3, 3); // РЎРѕР·РґР°РµРј С‚СЂРµС‚СЊСЋ РЅСѓР»РµРІСѓСЋ РјР°С‚СЂРёС†Сѓ
 	matrix3.fillZeros();
-	matrix3 += matrix1; // 1 = 3 матрице при сложении
+	matrix3 += matrix1; // 1 = 3 РјР°С‚СЂРёС†Рµ РїСЂРё СЃР»РѕР¶РµРЅРёРё
 
-	std::cout << "4) In-place addition: " << "\n" << matrix3 << std::endl; // Тут это видно
-	std::cout << "5) Grab value by index: " << "\n" << matrix1[0][0] << std::endl; // Взятие по индексу
+	std::cout << "4) In-place addition: " << "\n" << matrix3 << std::endl; // РўСѓС‚ СЌС‚Рѕ РІРёРґРЅРѕ
+	std::cout << "5) Grab value by index: " << "\n" << matrix1[0][0] << std::endl; // Р’Р·СЏС‚РёРµ РїРѕ РёРЅРґРµРєСЃСѓ
 
-	matrix3[0][0] = 9999; // Изменение по индексу
+	matrix3[0][0] = 9999; // РР·РјРµРЅРµРЅРёРµ РїРѕ РёРЅРґРµРєСЃСѓ
 
 	std::cout << "6) Change value by index: " << "\n" << matrix3 << std::endl;
 
@@ -38,9 +38,9 @@ int main()
 	matrix2.fillZeros();
 
 	bool is_equal = matrix1 == matrix2;
-	std::cout << "10) Equality test: " << "\n" << is_equal << std::endl; // Выведет 1
+	std::cout << "10) Equality test: " << "\n" << is_equal << std::endl; // Р’С‹РІРµРґРµС‚ 1
 
-	matrix1[0][0] = 4389; // Меняем элемент
+	matrix1[0][0] = 4389; // РњРµРЅСЏРµРј СЌР»РµРјРµРЅС‚
 	bool is_not_equal = matrix1 != matrix2;
-	std::cout << "11) Inequality test: " << "\n" << is_not_equal << std::endl; // Выведет 1
+	std::cout << "11) Inequality test: " << "\n" << is_not_equal << std::endl; // Р’С‹РІРµРґРµС‚ 1
 }
