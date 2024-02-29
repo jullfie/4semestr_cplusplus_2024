@@ -6,21 +6,21 @@
 
 class Matrix {
 private:
-    unsigned int m; // Строки
-    unsigned int n; // Столбцы 
+    unsigned int m; // РЎС‚СЂРѕРєРё
+    unsigned int n; // РЎС‚РѕР»Р±С†С‹ 
     int** data;
     class Matrix* next;
 
 public:
 
-    Matrix(unsigned int m, unsigned int n) : m(m), n(n) { // конструктор
+    Matrix(unsigned int m, unsigned int n) : m(m), n(n) { // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
         data = new int* [m];
         for (unsigned int i = 0; i < m; ++i) {
             data[i] = new int[n];
         }
     }
 
-    ~Matrix() { //деструктор
+    ~Matrix() { //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
         for (size_t i = 0; i < n; ++i) {
             delete[] data[i];
         }
@@ -29,7 +29,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& out, const Matrix& mat);
 
-    int* operator[](unsigned int index) { // Возвращая ссылку на указатель, можем обращаться как matrix[][]
+    int* operator[](unsigned int index) { // Р’РѕР·РІСЂР°С‰Р°СЏ СЃСЃС‹Р»РєСѓ РЅР° СѓРєР°Р·Р°С‚РµР»СЊ, РјРѕР¶РµРј РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РєР°Рє matrix[][]
         return data[index];
     }
 
@@ -49,7 +49,7 @@ public:
         }
     }
 
-    Matrix& operator+=(const Matrix& other) { //???конструктор копирования присваиваниемм
+    Matrix& operator+=(const Matrix& other) { //???РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РїСЂРёСЃРІР°РёРІР°РЅРёРµРјРј
         for (unsigned int i = 0; i < m; ++i) {
             for (unsigned int j = 0; j < n; ++j) {
                 data[i][j] += other.data[i][j];
@@ -127,7 +127,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
     for (unsigned int i = 0; i < matrix.m; ++i) {
         std::cout << " " << std::endl;
         for (unsigned int j = 0; j < matrix.n; ++j) {
-            os << std::setw(3) << matrix.data[i][j] << " | "; // setw тут устанавливает фиксированный размер поля для вывода, чтобы красиво было :)
+            os << std::setw(3) << matrix.data[i][j] << " | "; // setw С‚СѓС‚ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹Р№ СЂР°Р·РјРµСЂ РїРѕР»СЏ РґР»СЏ РІС‹РІРѕРґР°, С‡С‚РѕР±С‹ РєСЂР°СЃРёРІРѕ Р±С‹Р»Рѕ :)
         }
         os << '\n';
     }
