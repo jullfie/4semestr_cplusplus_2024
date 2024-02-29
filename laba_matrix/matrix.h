@@ -61,14 +61,6 @@ public:
     Matrix operator+(const Matrix& other) const {
         Matrix result(*this);
         return result += other;
-
-
-        /*for (unsigned int i = 0; i < m; ++i) {
-            for (unsigned int j = 0; j < n; ++j) {
-                result.data[i][j] = data[i][j] + other.data[i][j];
-            }
-        }
-        return result;*/
     }
 
     Matrix& operator-=(const Matrix& other) { 
@@ -78,6 +70,42 @@ public:
             }
         }
         return *this;
+    }
+
+    // Copy Constructor
+    Matrix(const Matrix& other) : m(other.m), n(other.n) {
+        data = new int* [m];
+        for (unsigned int i = 0; i < m; ++i) {
+            data[i] = new int[n];
+            for (unsigned int j = 0; j < n; ++j) {
+                data[i][j] = other.data[i][j];
+            }
+        }
+    }
+
+    // Copy Assignment Operator
+    Matrix& operator=(const Matrix& other) {
+        if (this != &other) { // Self-assignment check
+            // Clean up existing data
+            for (unsigned int i = 0; i < m; ++i) {
+                delete[] data[i];
+            }
+            delete[] data;
+
+            // Copy sizes
+            m = other.m;
+            n = other.n;
+
+            // Allocate and copy new data
+            data = new int* [m];
+            for (unsigned int i = 0; i < m; ++i) {
+                data[i] = new int[n];
+                for (unsigned int j = 0; j < n; ++j) {
+                    data[i][j] = other.data[i][j];
+                }
+            }
+        }
+        return *this; // Return a reference to this instance
     }
 
     Matrix operator-(const Matrix& other) const {
