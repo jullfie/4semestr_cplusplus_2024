@@ -19,7 +19,7 @@ public:
     void ShowInfo() const override {
         std::cout << "Я квадрат!" << std::endl;
         std::cout << "Моя площадь = " << area << std::endl;
-        std::cout << "Длина стороны = " << side << std::endl;
+        std::cout << "\nДлина стороны = " << side << std::endl;
     }
 
     std::string GetName() const override {
