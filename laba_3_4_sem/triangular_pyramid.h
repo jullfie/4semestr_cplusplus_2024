@@ -1,50 +1,49 @@
 #ifndef TRIANGULAR_PYRAMID_H
 #define TRIANGULAR_PYRAMID_H
 
-#include "Shape3D.h"
-#include <cmath>
+#include "Triangle.h"
+#include "Shape3D.h"  // Include the header for the Shape3D class
 
-// TriangularPyramid is a subclass of Shape3D
-class TriangularPyramid : public Shape3D {
+// TriangularPyramid now inherits from both Triangle and Shape3D
+class TriangularPyramid : public Triangle, public Shape3D {
 private:
-    float baseEdge; // Edge length of the triangular base
-    float height; // Height from the base to the apex
+    float pyramidHeight;  // Height from the base to the apex
 
 public:
     // Constructor
-    TriangularPyramid(float baseEdge, float height)
-        : baseEdge(baseEdge), height(height) {
-        CalculateVolume(); // Calculate the volume when the pyramid is created
+    TriangularPyramid(float base, float height, float pyramidHeight)
+        : Triangle(base, height), pyramidHeight(pyramidHeight) {
+        CalculateVolume();
     }
 
-    // Implement the pure virtual scaling method
+    // Scaling the pyramid scales all three dimensions
     void Scale(float scaleFactor) override {
-        baseEdge *= scaleFactor;
-        height *= scaleFactor;
-        CalculateVolume(); // Recalculate the volume after scaling
+        Triangle::Scale(scaleFactor); // Scale the base triangle
+        pyramidHeight *= scaleFactor; // Scale the pyramid height
+        CalculateVolume();
     }
 
-    // Implement the pure virtual volume calculation method
+    // Volume calculation for the pyramid
     void CalculateVolume() override {
-        float baseArea = (sqrt(3) / 4) * baseEdge * baseEdge; // Area of equilateral triangle
-        volume = (baseArea * height) / 3; // Volume of the pyramid
+        volume = (Triangle::CalculateBaseArea() * pyramidHeight) / 3;
     }
 
-    // Implement the pure virtual method to show information about the pyramid
+    // Show information about the pyramid
     void ShowInfo() const override {
-        std::cout << "ß òðèàíãóëÿðíàÿ ïèðàìèäà!" << std::endl;
-        std::cout << "Ìîé îáúåì = " << volume << std::endl;
-        std::cout << "Äëèíà ðåáðà îñíîâàíèÿ = " << baseEdge << std::endl;
-        std::cout << "Ìîÿ âûñîòà = " << height << std::endl;
+        std::cout << "Ð¯ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð°Ñ Ð¿Ð¸Ñ€Ð°Ð¼Ð¸Ð´Ð°!" << std::endl;
+        std::cout << "ÐœÐ¾Ð¹ Ð¾Ð±ÑŠÐµÐ¼ = " << volume << std::endl;
+        std::cout << "Ð”Ð»Ð¸Ð½Ð° Ñ€ÐµÐ±Ñ€Ð° Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ñ = " << Triangle::GetBase() << std::endl;
+        std::cout << "Ð’Ñ‹ÑÐ¾Ñ‚Ð° Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ñ = " << Triangle::GetHeight() << std::endl;
+        std::cout << "ÐœÐ¾Ñ Ð²Ñ‹ÑÐ¾Ñ‚Ð° = " << pyramidHeight << std::endl;
     }
 
-    // Implement the pure virtual method to get the name of the shape
+    // Get the name of the shape
     std::string GetName() const override {
         return "TriangularPyramid";
     }
 
-    // Destructor
-    ~TriangularPyramid() override {}
+    // Function to get volume
+    float GetVolume() const { return volume; }  // This should be inherited from Shape3D
 };
 
 #endif // TRIANGULAR_PYRAMID_H
