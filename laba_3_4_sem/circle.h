@@ -1,6 +1,6 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
-#define PI          3.14159265358979323846
+#define PI 3.14159265358979323846
 
 #include "Shape2D.h"
 #include <iostream>
@@ -24,7 +24,7 @@ public:
 
     // Area calculation for the circle
     void CalculateArea() override {
-        area = PI * pow(radius, 2);  // Area formula for circle
+        area = PI * std::pow(radius, 2);  // Area formula for circle
     }
 
     // Show information about the circle
@@ -41,6 +41,9 @@ public:
 
     // Function to get area
     float GetArea() const { return area; }  // Already calculated in CalculateArea()
+
+    // Function to get radius
+    float GetRadius() const { return radius; }  // Method to return the radius of the circle
 };
 
 #endif // CIRCLE_H
