@@ -36,7 +36,7 @@ public:
         std::cout << "Я треугольник!" << std::endl;
         std::cout << "Моя площадь = " << area << std::endl;
         std::cout << "Длина моего основания = " << base << std::endl;
-        std::cout << "Моя высота = " << height << std::endl;
+        std::cout << "\nМоя высота = " << height << std::endl;
     }
 
     std::string GetName() const override {
