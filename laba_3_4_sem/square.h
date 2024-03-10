@@ -17,9 +17,9 @@ public:
     }
 
     void ShowInfo() const override {
-        std::cout << "ß êâàäðàò!" << std::endl;
-        std::cout << "Ìîÿ ïëîùàäü = " << area << std::endl;
-        std::cout << "Äëèíà ñòîðîíû = " << side << std::endl;
+        std::cout << "Ð¯ ÐºÐ²Ð°Ð´Ñ€Ð°Ñ‚!" << std::endl;
+        std::cout << "ÐœÐ¾Ñ Ð¿Ð»Ð¾Ñ‰Ð°Ð´ÑŒ = " << area << std::endl;
+        std::cout << "Ð”Ð»Ð¸Ð½Ð° ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ = " << side << std::endl;
     }
 
     std::string GetName() const override {
