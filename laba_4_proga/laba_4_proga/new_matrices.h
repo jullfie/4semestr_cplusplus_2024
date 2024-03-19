@@ -16,6 +16,27 @@ private:
     T** data;               // Двумерный массив для хранения элементов матрицы
 
 public:
+
+    // Функция доступа к элементам матрицы   // т.к. была проблема инкапсуляции (досутп у ветора data. который наследуется из матриц)
+    T& at(unsigned int row, unsigned int col) {
+        if (row >= m || col >= n) {
+            throw std::out_of_range("Index out of range");
+        }
+        return data[row][col];
+    }
+    // Для константной версии
+    const T& at(unsigned int row, unsigned int col) const {
+        if (row >= m || col >= n) {
+            throw std::out_of_range("Index out of range");
+        }
+        return data[row][col];
+    }
+
+    // Методы для получения размеров матрицы
+    unsigned int getRows() const { return m; }
+    unsigned int getCols() const { return n; }
+
+
     // Конструктор для инициализации матрицы заданным количеством строк и столбцов
     Matrix(unsigned int m, unsigned int n) : m(m), n(n) {
         data = new T * [m];                                      // Выделение памяти для строк
