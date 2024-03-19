@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MATRIXUPDATED_H
-#define MATRIXUPDATED_H
+#ifndef new_matrices_h
+#define new_matrices_h
 
 #include <random>
 #include <ctime>
